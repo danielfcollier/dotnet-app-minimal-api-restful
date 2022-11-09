@@ -39,4 +39,4 @@ app.MapPost("/event", async (Event data) =>
     }
 });
 
-app.Run("http://localhost:4000");
+app.Run("http://0.0.0.0:4000");

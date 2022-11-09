@@ -7,6 +7,9 @@ run:
 clean:
 	@dotnet clean
 
+deploy:
+	@dotnet publish -c Release
+
 tunnel:
 	@ngrok http 4000
 
