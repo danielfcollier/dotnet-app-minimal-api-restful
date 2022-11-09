@@ -7,7 +7,7 @@ namespace Operation
         public static async Task<Transaction> Handler(Event data) => data switch
         {
             { Type: EventType.Deposit } => await Deposit(data),
-            { Type: EventType.Transfer } => await Deposit(data),
+            { Type: EventType.Transfer } => await Transfer(data),
             { Type: EventType.Withdraw } => await Withdraw(data),
             _ => throw new Exception(),
         };
@@ -36,9 +36,24 @@ namespace Operation
                 return new() { Destination = newAccount };
             }
 
-            decimal amount = data.Amount;
-            Account updatedAccount = await Db.Handler.Increment(account, amount);
+            Account updatedAccount = await Db.Handler.Increment(account, data.Amount);
             return new() { Destination = updatedAccount };
+        }
+
+        public static async Task<Transaction> Transfer(Event data)
+        {
+            string? idOrigin = data.Origin;
+            string? idDestination = data.Destination;
+
+            if (idOrigin is null || idDestination is null)
+            {
+                throw new Exception();
+            }
+
+            var origin = await Withdraw(data);
+            var destination = await Deposit(data);
+
+            return new() { Origin = origin.Origin, Destination = destination.Destination };
         }
 
         public static async Task<Transaction> Withdraw(Event data)
@@ -57,8 +72,7 @@ namespace Operation
                 throw new Exception();
             }
 
-            decimal amount = data.Amount;
-            Account updatedAccount = await Db.Handler.Decrement(account, amount);
+            Account updatedAccount = await Db.Handler.Decrement(account, data.Amount);
             return new() { Origin = updatedAccount };
         }
     }
