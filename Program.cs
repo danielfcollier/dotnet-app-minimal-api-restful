@@ -1,4 +1,5 @@
 using Model;
+using Transaction;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -6,7 +7,8 @@ var app = builder.Build();
 app.MapPost("/reset", async () =>
 {
     await Db.Handler.Reset();
-    return Results.Ok("OK");
+    Results.StatusCode(200);
+    return Results.Text("OK");
 });
 
 app.MapGet("/balance", async (HttpRequest request) =>
@@ -15,12 +17,12 @@ app.MapGet("/balance", async (HttpRequest request) =>
 
     Account? data = await Db.Handler.Read(id);
 
-    if (data is not null)
+    if (data is null)
     {
-        return Results.Ok(data.Balance);
+        return Results.NotFound(0);
     }
 
-    return Results.NotFound(0);
+    return Results.Ok(data.Balance);
 });
 
 app.Run("http://localhost:4000");
