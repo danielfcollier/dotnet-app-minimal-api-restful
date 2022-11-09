@@ -25,4 +25,23 @@ app.MapGet("/balance", async (HttpRequest request) =>
     return Results.Ok(data.Balance);
 });
 
+app.MapPost("/event", (Event data) =>
+{
+    Operation result = new ()
+    {
+        Origin = new Source()
+        {
+            Id = "100",
+            Balance = 15
+        }
+    };
+
+    if (result is null)
+    {
+        return Results.NotFound(0);
+    }
+
+    return Results.Json(result, null, null, 201);
+});
+
 app.Run("http://localhost:4000");
