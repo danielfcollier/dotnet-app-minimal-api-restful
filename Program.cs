@@ -26,13 +26,15 @@ app.MapGet("/balance", async (HttpRequest request) =>
 
 app.MapPost("/event", async (Event data) =>
 {
-    var result = await Operation.Bank.Handler(data);
-    if (result is null)
+    try
+    {
+        Transaction result = await Operation.Bank.Handler(data);
+        return Results.Json(result, null, null, 201);
+    }
+    catch
     {
         return Results.NotFound(0);
     }
-
-    return Results.Json(result, null, null, 201);
 });
 
 app.Run("http://localhost:4000");
