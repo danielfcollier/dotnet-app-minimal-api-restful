@@ -93,4 +93,6 @@ https://github.com/thingsboard/thingsboard-gateway/issues/897
 
 ### Test GitHub Actions Locally
 
+https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
 https://github.com/nektos/act
