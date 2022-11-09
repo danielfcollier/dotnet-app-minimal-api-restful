@@ -28,14 +28,17 @@ namespace Db
 
         public static async Task Create(Account account)
         {
-            var data = await ReadAll();
+            List<Account>? data = await ReadAll();
 
             if (data is null)
             {
-                return;
+                data = new() { account };
+            }
+            else
+            {
+                data.Add(account);
             }
 
-            data.Add(account);
             await File.WriteAllTextAsync(filepath, JsonSerializer.Serialize(data));
         }
 
@@ -57,6 +60,11 @@ namespace Db
             }
 
             return null;
+        }
+
+        public static Account Update(Account account)
+        {
+            return account;
         }
     }
 }
