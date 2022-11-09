@@ -11,16 +11,16 @@ app.MapPost("/reset", async () =>
 
 app.MapGet("/balance", async (HttpRequest request) =>
 {
-string id = request.Query["account_id"];
+    string id = request.Query["account_id"];
 
-Account? data = await Db.Handler.Read(id);
+    Account? data = await Db.Handler.Read(id);
 
-if (data is not null)
-{
-    return Results.Ok(data.Balance);
-}
+    if (data is not null)
+    {
+        return Results.Ok(data.Balance);
+    }
 
-return Results.NotFound(0);
+    return Results.NotFound(0);
 });
 
 app.Run("http://localhost:4000");
