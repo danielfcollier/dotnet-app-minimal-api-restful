@@ -36,13 +36,14 @@ namespace Operation
                 return new() { Destination = newAccount };
             }
 
-            Account updatedAccount = await Db.Handler.Update(account);
+            decimal amount = data.Amount;
+            Account updatedAccount = await Db.Handler.Increment(account, amount);
             return new() { Destination = updatedAccount };
         }
 
         public static async Task<Transaction> Withdraw(Event data)
         {
-            string? id = data.Destination;
+            string? id = data.Origin;
 
             if (id is null)
             {
@@ -53,19 +54,12 @@ namespace Operation
 
             if (account is null)
             {
-                Account newAccount = new()
-                {
-                    Id = id,
-                    Balance = data.Amount
-                };
-
-                await Db.Handler.Create(newAccount);
-
-                return new() { Destination = newAccount };
+                throw new Exception();
             }
 
-            Account updatedAccount = await Db.Handler.Update(account);
-            return new() { Destination = updatedAccount };
+            decimal amount = data.Amount;
+            Account updatedAccount = await Db.Handler.Decrement(account, amount);
+            return new() { Origin = updatedAccount };
         }
     }
 }

@@ -62,7 +62,17 @@ namespace Db
             return null;
         }
 
-        public static async Task<Account> Update(Account account)
+        public static async Task<Account> Increment(Account account, decimal amount)
+        {
+            return await Update(account, amount);
+        }
+
+        public static async Task<Account> Decrement(Account account, decimal amount)
+        {
+            return await Update(account, -amount);
+        }
+
+        private static async Task<Account> Update(Account account, decimal amount)
         {
             List<Account>? data = await ReadAll();
 
@@ -76,7 +86,7 @@ namespace Db
             {
                 if (element.Id == account.Id)
                 {
-                    element.Balance = element.Balance + account.Balance;
+                    element.Balance =  element.Balance + amount;
                     updatedAccount.Id = element.Id;
                     updatedAccount.Balance = element.Balance;
                 }
