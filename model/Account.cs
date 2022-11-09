@@ -10,7 +10,6 @@ namespace Model
         [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("balance")]
         public decimal Balance { get; set; }
     }
