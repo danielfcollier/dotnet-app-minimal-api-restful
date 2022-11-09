@@ -7,6 +7,7 @@ app.MapPost("/reset", async () =>
 {
     await Db.Handler.Reset();
     Results.StatusCode(200);
+
     return Results.Text("OK");
 });
 
@@ -29,6 +30,7 @@ app.MapPost("/event", async (Event data) =>
     try
     {
         Transaction result = await Operation.Bank.Handler(data);
+
         return Results.Json(result, null, null, 201);
     }
     catch
