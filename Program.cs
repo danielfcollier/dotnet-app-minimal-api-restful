@@ -1,5 +1,4 @@
 using Model;
-using Transaction;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -25,17 +24,9 @@ app.MapGet("/balance", async (HttpRequest request) =>
     return Results.Ok(data.Balance);
 });
 
-app.MapPost("/event", (Event data) =>
+app.MapPost("/event", async (Event data) =>
 {
-    Operation result = new ()
-    {
-        Origin = new Source()
-        {
-            Id = "100",
-            Balance = 15
-        }
-    };
-
+    var result = await Operation.Bank.Handler(data);
     if (result is null)
     {
         return Results.NotFound(0);
