@@ -62,9 +62,29 @@ namespace Db
             return null;
         }
 
-        public static Account Update(Account account)
+        public static async Task<Account> Update(Account account)
         {
-            return account;
+            List<Account>? data = await ReadAll();
+
+            if (data is null)
+            {
+                throw new Exception();
+            }
+
+            Account updatedAccount = new();
+            foreach (var element in data)
+            {
+                if (element.Id == account.Id)
+                {
+                    element.Balance = element.Balance + account.Balance;
+                    updatedAccount.Id = element.Id;
+                    updatedAccount.Balance = element.Balance;
+                }
+            }
+
+            await File.WriteAllTextAsync(filepath, JsonSerializer.Serialize(data));
+
+            return updatedAccount;
         }
     }
 }
