@@ -74,7 +74,7 @@ If tests are passing, the CI with GitHub Actions pushes the changes to a product
 ### Base template created with:
 
 ```bash
-dotnet new webapi -minimal -o dotnet-app-minimal-api-restful
+dotnet new webapi -minimal -o dotnet-minimal-api-restful
 ```
 
 https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio
