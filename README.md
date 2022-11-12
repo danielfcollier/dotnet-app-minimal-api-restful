@@ -1,4 +1,4 @@
-# RESTful API App
+# REST API App
 
 Requirements: .NET SDK 6.0
 
@@ -43,8 +43,8 @@ make deploy
 ### With Docker:
 
 ```bash
-docker build -t restful-api .
-docker run -p 4000:4000 restful-api
+docker build -t rest-api .
+docker run -p 4000:4000 rest-api
 ```
 
 ## Run Tests
@@ -74,7 +74,7 @@ If tests are passing, the CI with GitHub Actions pushes the changes to a product
 ### Base template created with:
 
 ```bash
-dotnet new webapi -minimal -o dotnet-minimal-api-restful
+dotnet new webapi -minimal -o dotnet-minimal-api-rest
 ```
 
 https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio

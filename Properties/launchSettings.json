@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "dotnet_app_minimal_api_restful": {
+    "dotnet_app_minimal_api_rest": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

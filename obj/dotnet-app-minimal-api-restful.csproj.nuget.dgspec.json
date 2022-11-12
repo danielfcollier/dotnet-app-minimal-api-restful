@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/collier/gitspace/portfolio/dotnet-app-minimal-api-restful/dotnet-app-minimal-api-restful.csproj": {}
+    "/home/collier/gitspace/portfolio/dotnet-minimal-api-restful/dotnet-app-minimal-api-restful.csproj": {}
   },
   "projects": {
-    "/home/collier/gitspace/portfolio/dotnet-app-minimal-api-restful/dotnet-app-minimal-api-restful.csproj": {
+    "/home/collier/gitspace/portfolio/dotnet-minimal-api-restful/dotnet-app-minimal-api-restful.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/collier/gitspace/portfolio/dotnet-app-minimal-api-restful/dotnet-app-minimal-api-restful.csproj",
+        "projectUniqueName": "/home/collier/gitspace/portfolio/dotnet-minimal-api-restful/dotnet-app-minimal-api-restful.csproj",
         "projectName": "dotnet-app-minimal-api-restful",
-        "projectPath": "/home/collier/gitspace/portfolio/dotnet-app-minimal-api-restful/dotnet-app-minimal-api-restful.csproj",
+        "projectPath": "/home/collier/gitspace/portfolio/dotnet-minimal-api-restful/dotnet-app-minimal-api-restful.csproj",
         "packagesPath": "/home/collier/.nuget/packages/",
-        "outputPath": "/home/collier/gitspace/portfolio/dotnet-app-minimal-api-restful/obj/",
+        "outputPath": "/home/collier/gitspace/portfolio/dotnet-minimal-api-restful/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/collier/.nuget/NuGet/NuGet.Config"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.109/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.110/RuntimeIdentifierGraph.json"
         }
       }
     }
