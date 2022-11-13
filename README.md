@@ -62,7 +62,7 @@ Tests are configured to run on multiple OS and .NET SDK versions to make sure th
 #### Test locally with `act`
 
 ```bash
-act -a tests
+act -j tests
 ```
 
 ### Deployment to Production Branch
