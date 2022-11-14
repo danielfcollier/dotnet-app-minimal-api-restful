@@ -43,8 +43,8 @@ make deploy
 ### With Docker:
 
 ```bash
-docker build -t rest-api .
-docker run -p 4000:4000 rest-api
+docker build -t api-rest .
+docker run -p 4000:4000 api-rest
 ```
 
 ## Run Tests
