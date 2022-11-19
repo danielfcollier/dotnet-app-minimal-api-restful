@@ -9,7 +9,7 @@ namespace Db
         private readonly static string DB_FILE = "data.json";
         private readonly static string filepath = Path.Join(".", "db", DB_FILE);
 
-        private static async Task<List<Account>?> ReadAll()
+        public static async Task<List<Account>?> ReadAll()
         {
             var content = await File.ReadAllTextAsync(filepath);
 
