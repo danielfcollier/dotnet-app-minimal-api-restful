@@ -74,12 +74,14 @@ If tests are passing, the CI with GitHub Actions pushes the changes to a product
 ### Base template created with:
 
 ```bash
-dotnet new webapi -minimal -o dotnet-minimal-api-rest
+dotnet new webapi -minimal -o Minimal.API.Rest
 ```
 
 https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio
 
 https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0
+
+https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
 
 ### Ngrok
 

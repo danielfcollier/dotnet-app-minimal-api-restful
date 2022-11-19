@@ -14,4 +14,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /App
 COPY --from=build /App/out .
-ENTRYPOINT ["dotnet", "dotnet-minimal-api-rest.dll"]
+ENTRYPOINT ["dotnet", "Minimal.API.Rest.dll"]
