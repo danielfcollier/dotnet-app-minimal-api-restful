@@ -3,7 +3,7 @@ using Model;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapPost("/reset", async () =>
+app.MapPost("/reset", async Task<IResult> () =>
 {
     await Db.Handler.Reset();
     Results.StatusCode(200);
@@ -11,7 +11,7 @@ app.MapPost("/reset", async () =>
     return Results.Text("OK");
 });
 
-app.MapGet("/balance", async (HttpRequest request) =>
+app.MapGet("/balance", async Task<IResult> (HttpRequest request) =>
 {
     string id = request.Query["account_id"];
 
@@ -25,7 +25,7 @@ app.MapGet("/balance", async (HttpRequest request) =>
     return Results.Ok(data.Balance);
 });
 
-app.MapPost("/event", async (Event data) =>
+app.MapPost("/event", async Task<IResult> (Event data) =>
 {
     try
     {
@@ -39,4 +39,11 @@ app.MapPost("/event", async (Event data) =>
     }
 });
 
-app.Run("http://0.0.0.0:4000");
+if (app.Environment.EnvironmentName != "Test") {
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "4000";
+    app.Urls.Add($"http://0.0.0.0:{port}");
+} 
+app.Run();
+
+public partial class Program
+{ }
