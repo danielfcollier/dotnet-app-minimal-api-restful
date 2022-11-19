@@ -1,6 +1,9 @@
 build:
 	@dotnet build
 
+build-ci:
+	@dotnet build --configuration Release --no-restore
+
 run:
 	@dotnet run --project Minimal.API.Rest
 
@@ -15,6 +18,9 @@ tunnel:
 
 test:
 	@ASPNETCORE_ENVIRONMENT=Test dotnet test
+
+test-ci:
+	@ASPNETCORE_ENVIRONMENT=Test dotnet test --no-restore --verbosity normal
 
 local-tests:
 	@curl -i -X POST http://localhost:4000/reset && echo
